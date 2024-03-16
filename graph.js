@@ -72,7 +72,7 @@ var layout = {
         size: 24
       },
       xref: 'paper',
-      x: 0.05,
+      x: 0.5,
     },
     width: 800,
     paper_bgcolor: "rgba(0, 0, 0, 0)"
