@@ -20,30 +20,23 @@
     <body>
 
         <div class="container py-4">
-            <div class="row">
-
+            <div class="row justify-content-center">
                 <div class="col-md-6">
-
-                    <button class="btn btn-primary btn-block mb-3" onclick="addTaskModal()">Add new task</button>
-
-                    <div id="task-list">
-                        <div class="card task-card">
-                            <h3 class="task-title">Test task</h3>
-                            <div class="task-description">Test description</div>
-                            <div class="task-progress">0% completed</div>
-                            <input type="range" class="task-progress" min="0" max="100" step="5" />
+                    <button class="btn btn-primary btn-block mb-3" onclick="addTaskModal()">
+                        <i class="fas fa-plus-circle"></i> Add New Task
+                    </button>
+                    <div class="card task-card">
+                        <h3 class="task-title">Test task</h3>
+                        <div class="task-description">Test description</div>
+                        <div class="task-progress">
+                            <div class="progress">
+                                <div class="progress-bar bg-dark" role="progressbar" style="width: 0%;" aria-valuenow="0"
+                                    aria-valuemin="0" aria-valuemax="100">0% completed</div>
+                            </div>
                         </div>
+                        <input type="range" class="task-progress custom-range" min="0" max="100" step="5" />
                     </div>
-                    
-
                 </div>
-
-                <div class="col-md-6">
-
-
-
-                </div>
-
             </div>
         </div>
 
@@ -77,7 +70,6 @@
                 
             </div>
         </div>
-
     </body>
 
 </html>
