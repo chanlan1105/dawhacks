@@ -59,7 +59,11 @@ function createNewTask(title, desc, time) {
             title, desc, time
         }),
         success: res => {
-            console.log(res);
+            alert("Success!");
+
+            cancelAddTask();
+
+            getTasks();
         }
     });
 }
@@ -75,17 +79,22 @@ $("#confirm-add-task-btn").on("click", () => {
  * Fetches tasks from server and displays them in UI.
  */
 function getTasks() {
+    $("#task-list").html("");
+
     $.ajax({
         type: "GET",
         url: server + "/gettask",
         dataType: "json",
         success: res => {
-            for (task of res) {
-                createNewTask(task.title, task.desc, task.time);
+            for (i in res) {
+                const task = res[i];
+                if (task == null) continue;
+                createTaskBubble(task.title, task.desc, task.progress, i).appendTo("#task-list");
             }
         }
     });
 }
+getTasks();
 
 /**
  * Sends a request to the server to delete a task.
