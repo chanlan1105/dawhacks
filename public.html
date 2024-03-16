@@ -14,6 +14,20 @@
 
         <!-- External scripts -->
         <script src="main.js" defer></script>
+        
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Plotly 3D Function Plot</title>
+        <!-- Include Plotly.js -->
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <style>
+          /* Center the graph horizontally */
+          #plot {
+            margin: 0 auto;
+            text-align: center;
+          }
+        </style>
 
     </head>
 
@@ -74,6 +88,10 @@
                 
             </div>
         </div>
+
+        <div id="plot" style="width: 700px; height: 500px;"></div>
+  <!-- Include the JavaScript file -->
+  <script src="graph.js"></script>
     </body>
 
 </html>
