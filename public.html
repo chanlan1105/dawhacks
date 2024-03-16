@@ -25,17 +25,21 @@
                     <button class="btn btn-primary btn-block mb-3" onclick="addTaskModal()">
                         <i class="fas fa-plus-circle"></i> Add New Task
                     </button>
-                    <div class="card task-card">
-                        <h3 class="task-title">Test task</h3>
-                        <div class="task-description">Test description</div>
-                        <div class="task-progress">
-                            <div class="progress">
-                                <div class="progress-bar bg-dark" role="progressbar" style="width: 0%;" aria-valuenow="0"
-                                    aria-valuemin="0" aria-valuemax="100">0% completed</div>
+
+                    <div id="task-list">
+                        <div class="card task-card">
+                            <h3 class="task-title">Test task</h3>
+                            <div class="task-description">Test description</div>
+                            <div class="task-progress">
+                                <div class="progress">
+                                    <div class="progress-bar bg-dark" role="progressbar" style="width: 0%;" aria-valuenow="0"
+                                        aria-valuemin="0" aria-valuemax="100">0% completed</div>
+                                </div>
                             </div>
+                            <input type="range" class="task-progress custom-range" min="0" max="100" step="5" />
                         </div>
-                        <input type="range" class="task-progress custom-range" min="0" max="100" step="5" />
                     </div>
+                    
                 </div>
             </div>
         </div>

@@ -22,15 +22,26 @@ function createTaskBubble(title, desc, progress, id) {
     const $card = $("<div></div>");
     const $title = $("<h3></h3>");
     const $desc = $("<div></div>");
-    const $progresLabel = $("<div></div>");
+    const $progressContainer = $("<div></div>");
+    const $progressLabelContainer = $("<div></div>");
+    const $progressLabel = $("<div></div>");
     const $progressBar = $("<input />");
 
     // Add properties to elements
     $card.addClass("card task-card").attr("id", `task-id-${id}`);
     $title.addClass("task-title").text(title);
     $desc.addClass("task-description").text(desc);
-    $progresLabel.addClass("task-progress").text(`${progress * 100}% completed`);
-    $progressBar.attr("type", "range")
+
+    // Progress bar and label
+    $progressContainer.addClass("task-progress");
+    $progressLabelContainer.addClass("progress");
+    $progressLabel
+        .addClass("progress-bar progress-bar-striped bg-dark")
+        .attr("role", "progressbar")
+        .css("width", `${progress * 100}%`)
+        .text(`${progress * 100}% completed`);
+    $progressBar
+        .attr("type", "range")
         .addClass("task-progress")
         .prop({
             min: 0,
@@ -42,9 +53,12 @@ function createTaskBubble(title, desc, progress, id) {
     $progressBar.on("change", function() {
         updateProgress(id, $(this).val() / 100);
     });
+
+    // Append progress elements to container
+    $progressContainer.append($progressLabelContainer.append($progressLabel));
     
     // Append elements to $card
-    $card.append($title, $desc, $progresLabel, $progressBar);
+    $card.append($title, $desc, $progressContainer, $progressBar);
 
     return $card;
 }
@@ -134,5 +148,6 @@ function updateProgress(id, progress) {
         success: res => {
         }
     });
-    $(`#task-id-${id} div.task-progress`).text(`${progress * 100}% completed`);
+    $(`#task-id-${id} .progress-bar`).text(`${progress * 100}% completed`);
+    $(`#task-id-${id} .progress-bar`).css("width", `${progress * 100}%`);
 }
