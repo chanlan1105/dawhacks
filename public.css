@@ -1,7 +1,28 @@
 .task-card {
   padding: 1rem 1.5rem;
+  margin-bottom: 0.5rem;
+  box-shadow: 2px 2px 5px rgb(192, 147, 199);
+  background-color: hsl(258, 67%, 91%);
+}
+.task-card .progress-bar {
+  background-color: #820da8;
 }
 
 .task-description {
   margin-bottom: 0.4rem;
+}
+
+input[type=range] {
+  accent-color: #820da8;
+}
+
+#new-task-btn {
+  background-color: hsl(297, 100%, 31%);
+  color: white;
+}
+#new-task-btn:focus {
+  box-shadow: 0 0 0 0.2rem hsla(297, 100%, 40%, 0.25);
+}
+#new-task-btn:hover {
+  background-color: hsl(297, 100%, 26%);
 }/*# sourceMappingURL=public.css.map */
