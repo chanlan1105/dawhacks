@@ -1,1 +1,7 @@
-/*# sourceMappingURL=public.css.map */
+.task-card {
+  padding: 1rem 1.5rem;
+}
+
+.task-description {
+  margin-bottom: 0.4rem;
+}/*# sourceMappingURL=public.css.map */
