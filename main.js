@@ -63,6 +63,13 @@ function createNewTask(title, desc, time) {
         }
     });
 }
+$("#confirm-add-task-btn").on("click", () => {
+    let title = $("#new-task-title").val();
+    let desc = $("#new-task-description").val();
+    let time = $("#new-task-time").val();
+
+    createNewTask(title, desc, time);
+});
 
 /**
  * Fetches tasks from server and displays them in UI.
@@ -73,7 +80,27 @@ function getTasks() {
         url: server + "/gettask",
         dataType: "json",
         success: res => {
-            console.log(res)
+            for (task of res) {
+                createNewTask(task.title, task.desc, task.time);
+            }
+        }
+    });
+}
+
+/**
+ * Sends a request to the server to delete a task.
+ * @param {String} id ID of the task to delete
+ */
+function deleteTask(id) {
+    $.ajax({
+        type: "POST",
+        url: server + "/deltask",
+        contentType: "application/json",
+        data: JSON.stringify({
+            id
+        }),
+        success: res => {
+            console.log(res);
         }
     });
 }
