@@ -81,7 +81,7 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
             #content_length = int(self.headers['Content-Length'])
             #ost_id = self.rfile.read(content_length).decode('utf-8')
             json_id = json_data.get('id')
-            del_task[json_id] = None
+            del_task[int(json_id)] = None
             print(del_task)
 
         elif self.path == '/progresstask':

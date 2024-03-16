@@ -86,6 +86,16 @@ var customPurpleScale = [
     [1, 'rgb(128, 0, 128)']
 ];
 
+var customBlackScale = [
+    [0, 'rgb(0, 0, 0)'],         // Black color at the start
+    [0.25, 'rgb(51, 51, 51)'],   // Dark gray
+    [0.5, 'rgb(102, 102, 102)'], // Medium gray
+    [0.75, 'rgb(153, 153, 153)'],// Light gray
+    [1, 'rgb(204, 204, 204)']    // Very light gray
+];
+
+colors= [customPurpleScale, customBlackScale]
+
 Plotly.newPlot('plot', [{
     type: 'surface',
     x: x,
@@ -96,4 +106,5 @@ Plotly.newPlot('plot', [{
     reversescale: true
 }], layout);
 
-document.body.style.backgroundColor = customPurpleScale[0][1];
+//document.body.style.backgroundColor = colors[1][4][1];
+document.body.style.backgroundColor = colors[0][0][1];
