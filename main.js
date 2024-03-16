@@ -36,7 +36,7 @@ function createTaskBubble(title, desc, progress, id) {
     $progressContainer.addClass("task-progress");
     $progressLabelContainer.addClass("progress");
     $progressLabel
-        .addClass("progress-bar progress-bar-striped bg-dark")
+        .addClass("progress-bar progress-bar-striped")
         .attr("role", "progressbar")
         .css("width", `${progress * 100}%`)
         .text(`${progress * 100}% completed`);
@@ -58,7 +58,7 @@ function createTaskBubble(title, desc, progress, id) {
     $progressContainer.append($progressLabelContainer.append($progressLabel));
     
     // Append elements to $card
-    $card.append($title, $desc, $progressContainer, $progressBar);
+    $card.append($title, $desc, $progressBar, $progressContainer);
 
     return $card;
 }
@@ -148,6 +148,6 @@ function updateProgress(id, progress) {
         success: res => {
         }
     });
-    $(`#task-id-${id} .progress-bar`).text(`${progress * 100}% completed`);
+    $(`#task-id-${id} .progress-bar`).text(`${Math.round(progress * 100)}% completed`);
     $(`#task-id-${id} .progress-bar`).css("width", `${progress * 100}%`);
 }
