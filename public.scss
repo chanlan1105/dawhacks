@@ -7,6 +7,15 @@
     .progress-bar {
         background-color: #820da8;
     }
+
+    transition: left .75s ease-in, opacity .75s ease-in;
+    left: 0px;
+    opacity: 1;
+
+    &.disappear {
+        left: 19rem;
+        opacity: 0;
+    }
 }
 .task-description {
     margin-bottom: .4rem;

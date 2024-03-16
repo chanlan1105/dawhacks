@@ -5,7 +5,7 @@ function addTaskModal() {
     $("#new-task-modal").modal("show");
 }
 function cancelAddTask() {
-    $("#new-task-modal .modal-body input").val("");
+    $("#new-task-modal .modal-body input, .modal-body textarea").val("");
     $("#new-task-modal").modal("hide");
 }
 
@@ -118,6 +118,11 @@ getTasks();
  * @param {String} id ID of the task to delete
  */
 function deleteTask(id) {
+    $(`#task-id-${id}`).addClass("disappear");
+    window.setTimeout(() => {
+        $(`#task-id-${id}`).remove();
+    }, 750);
+
     $.ajax({
         type: "POST",
         url: server + "/deltask",
@@ -150,4 +155,10 @@ function updateProgress(id, progress) {
     });
     $(`#task-id-${id} .progress-bar`).text(`${Math.round(progress * 100)}% completed`);
     $(`#task-id-${id} .progress-bar`).css("width", `${progress * 100}%`);
+
+    if (progress == 1) {
+        window.setTimeout(() => {
+            deleteTask(id);
+        }, 1000);
+    }
 }

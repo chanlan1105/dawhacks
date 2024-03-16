@@ -3,9 +3,16 @@
   margin-bottom: 0.5rem;
   box-shadow: 2px 2px 5px rgb(192, 147, 199);
   background-color: hsl(258, 67%, 91%);
+  transition: left 0.75s ease-in, opacity 0.75s ease-in;
+  left: 0px;
+  opacity: 1;
 }
 .task-card .progress-bar {
   background-color: #820da8;
+}
+.task-card.disappear {
+  left: 19rem;
+  opacity: 0;
 }
 
 .task-description {
