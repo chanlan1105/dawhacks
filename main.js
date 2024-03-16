@@ -26,10 +26,10 @@ function createTaskBubble(title, desc, progress, id) {
     const $progressBar = $("<input />");
 
     // Add properties to elements
-    $card.addClass("card task-card");
+    $card.addClass("card task-card").attr("id", `task-id-${id}`);
     $title.addClass("task-title").text(title);
     $desc.addClass("task-description").text(desc);
-    $progresLabel.addClass("task-progress");
+    $progresLabel.addClass("task-progress").text(`${progress * 100}% completed`);
     $progressBar.attr("type", "range")
         .addClass("task-progress")
         .prop({
@@ -37,7 +37,11 @@ function createTaskBubble(title, desc, progress, id) {
             max: 100,
             step: 5
         })
+        .data("id", id)
         .val(progress * 100);
+    $progressBar.on("change", function() {
+        updateProgress(id, $(this).val() / 100);
+    });
     
     // Append elements to $card
     $card.append($title, $desc, $progresLabel, $progressBar);
@@ -84,7 +88,6 @@ function getTasks() {
     $.ajax({
         type: "GET",
         url: server + "/gettask",
-        dataType: "json",
         success: res => {
             for (i in res) {
                 const task = res[i];
@@ -112,4 +115,24 @@ function deleteTask(id) {
             console.log(res);
         }
     });
+}
+
+/**
+ * Sends a request to the server to update progress of a task.
+ * @param {String} id Task ID
+ * @param {Number} progress Progress value from 0 to 1
+ */
+function updateProgress(id, progress) {
+    $.ajax({
+        type: "POST",
+        url: server + "/progresstask",
+        contentType: "application/json",
+        data: JSON.stringify({
+            id, 
+            progress
+        }),
+        success: res => {
+        }
+    });
+    $(`#task-id-${id} div.task-progress`).text(`${progress * 100}% completed`);
 }
